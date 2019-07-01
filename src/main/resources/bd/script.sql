@@ -1,58 +1,66 @@
--- create table USER(
---                      id_user bigint not null auto_increment primary key,
---                      email varchar(30),
---                      password varchar(30)
--- );
 --
--- create table PERSONAL_DATA(
---                               id_personal_data bigint auto_increment primary key,
---                               name varchar(100) not null,
---                               last_name varchar(100) not null,
---                               cpf bigint not null,
---                               id_user bigint not null,
---                               constraint fk_user foreign key (id_user)
---                                   references USER(id_user)
---                                   on delete cascade
---                                   on update cascade
--- );
+-- CREATE TABLE `shippers` (
+--     `shipper_id` smallint(6) NOT NULL AUTO_INCREMENT,
+--     `name` varchar(50) NOT NULL,
+--     PRIMARY KEY (`shipper_id`)
+--     ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- INSERT INTO `shippers` VALUES (1,'Hettinger LLC');
+-- INSERT INTO `shippers` VALUES (2,'Schinner-Predovic');
+-- INSERT INTO `shippers` VALUES (3,'Satterfield LLC');
+-- INSERT INTO `shippers` VALUES (4,'Mraz, Renner and Nolan');
+-- INSERT INTO `shippers` VALUES (5,'Waters, Mayert and Prohaska');
 --
--- create  table ADRESS(
---                         id_adress bigint auto_increment primary key,
---                         street varchar(30),
---                         neighborhood varchar(30),
---                         city varchar(30),
---                         state varchar(30),
---                         cep bigint not null,
---                         id_personal_data bigint not null,
---                         constraint fk_personal_data foreign key (id_personal_data)
---                             references PERSONAL_DATA(id_personal_data)
---                             on delete cascade
---                             on update cascade
--- );
---         #drop table ADRESS;
---         #drop table PERSONAL_DATA;
---         #drop table USER;
 --
--- insert into USER (id_user, email, password) values (11,"pedro@gmail.com", "pedro123");
--- insert into USER (id_user, email, password) values (22,"lucas@gmail.com", "lucas123");
--- insert into USER (id_user, email, password) values (33,"paulo@gmail.com", "paulo123");
--- insert into USER (id_user, email, password) values (44,"vinicius@gmail.com", "vinicius123");
--- insert into USER (id_user, email, password) values (55,"guilherme@gmail.com", "guilherme123");
+-- CREATE TABLE `customers` (
+--     `customer_id` int(11) NOT NULL AUTO_INCREMENT,
+--     `first_name` varchar(50) NOT NULL,
+--     `last_name` varchar(50) NOT NULL,
+--     `birth_date` date DEFAULT NULL,
+--     `phone` varchar(50) DEFAULT NULL,
+--     `address` varchar(50) NOT NULL,
+--     `city` varchar(50) NOT NULL,
+--     `state` char(2) NOT NULL,
+--     `points` int(11) NOT NULL DEFAULT '0',
+--     PRIMARY KEY (`customer_id`)
+--     ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- INSERT INTO `customers` VALUES (1,'Babara','MacCaffrey','1986-03-28','781-932-9754','0 Sage Terrace','Waltham','MA',2273);
+-- INSERT INTO `customers` VALUES (2,'Ines','Brushfield','1986-04-13','804-427-9456','14187 Commercial Trail','Hampton','VA',947);
+-- INSERT INTO `customers` VALUES (3,'Freddi','Boagey','1985-02-07','719-724-7869','251 Springs Junction','Colorado Springs','CO',2967);
+-- INSERT INTO `customers` VALUES (4,'Ambur','Roseburgh','1974-04-14','407-231-8017','30 Arapahoe Terrace','Orlando','FL',457);
+-- INSERT INTO `customers` VALUES (5,'Clemmie','Betchley','1973-11-07',NULL,'5 Spohn Circle','Arlington','TX',3675);
+-- INSERT INTO `customers` VALUES (6,'Elka','Twiddell','1991-09-04','312-480-8498','7 Manley Drive','Chicago','IL',3073);
+-- INSERT INTO `customers` VALUES (7,'Ilene','Dowson','1964-08-30','615-641-4759','50 Lillian Crossing','Nashville','TN',1672);
+-- INSERT INTO `customers` VALUES (8,'Thacher','Naseby','1993-07-17','941-527-3977','538 Mosinee Center','Sarasota','FL',205);
+-- INSERT INTO `customers` VALUES (9,'Romola','Rumgay','1992-05-23','559-181-3744','3520 Ohio Trail','Visalia','CA',1486);
+-- INSERT INTO `customers` VALUES (10,'Levy','Mynett','1969-10-13','404-246-3370','68 Lawn Avenue','Atlanta','GA',796);
 --
--- insert into PERSONAL_DATA (id_personal_data, name, last_name, cpf, id_user) values (1,"Pedro", "Prado", 1234, 11);
--- insert into PERSONAL_DATA (id_personal_data, name, last_name, cpf, id_user) values (2,"Lucas", "Marinho", 2345, 22);
--- insert into PERSONAL_DATA (id_personal_data, name, last_name, cpf, id_user) values (3,"Paulo", "Coelho", 2333, 33);
--- insert into PERSONAL_DATA (id_personal_data, name, last_name, cpf, id_user) values (4,"Vinicius", "Santos", 3334, 44);
--- insert into PERSONAL_DATA (id_personal_data, name, last_name, cpf, id_user) values (5,"Guilherme", "Padilha", 4434, 55);
 --
--- insert into ADRESS (id_adress, street, neighborhood, city, state, cep, id_personal_data)
--- values (1, "Rua Maria de Souza", "São Tomé", "São Pedro", "São Paulo", 02359, 1);
--- insert into ADRESS (id_adress, street, neighborhood, city, state, cep, id_personal_data)
--- values (2, "Rua Antônio de Bonis", "Vila Pirajussara", "São Paulo", "São Paulo", 55555, 2);
--- insert into ADRESS (id_adress, street, neighborhood, city, state, cep, id_personal_data)
--- values (3, "Rua Santa Rosa Júnior", "Jaguaré", "São Paulo", "São Paulo", 34532, 3);
--- insert into ADRESS (id_adress, street, neighborhood, city, state, cep, id_personal_data)
--- values (4, "Rua Nossa Senhora do Carmo", "José Menino", "Santos", "São Paulo", 02359, 4);
--- insert into ADRESS (id_adress, street, neighborhood, city, state, cep, id_personal_data)
--- values (5, "Accindino Souza Andrade", "Boqueirão", "Santos", "São Paulo", 62359, 5);
+--
+--
+-- CREATE TABLE `orders` (
+--     `order_id` int(11) NOT NULL AUTO_INCREMENT,
+--     `customer_id` int(11) NOT NULL,
+--     `order_date` date NOT NULL,
+--     `status` tinyint(4) NOT NULL DEFAULT '1',
+--     `comments` varchar(2000) DEFAULT NULL,
+--     `shipped_date` date DEFAULT NULL,
+--     `shipper_id` smallint(6) DEFAULT NULL,
+--     PRIMARY KEY (`order_id`),
+--     KEY `fk_orders_customers_idx` (`customer_id`),
+--     KEY `fk_orders_shippers_idx` (`shipper_id`),
+--     KEY `fk_orders_order_statuses_idx` (`status`),
+--     CONSTRAINT `fk_orders_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON UPDATE CASCADE,
+--     CONSTRAINT `fk_orders_order_statuses` FOREIGN KEY (`status`) REFERENCES `order_statuses` (`order_status_id`) ON UPDATE CASCADE,
+--     CONSTRAINT `fk_orders_shippers` FOREIGN KEY (`shipper_id`) REFERENCES `shippers` (`shipper_id`) ON UPDATE CASCADE
+--     ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- INSERT INTO `orders` VALUES (1,6,'2019-01-30',1,NULL,NULL,NULL);
+-- INSERT INTO `orders` VALUES (2,7,'2018-08-02',2,NULL,'2018-08-03',4);
+-- INSERT INTO `orders` VALUES (3,8,'2017-12-01',1,NULL,NULL,NULL);
+-- INSERT INTO `orders` VALUES (4,2,'2017-01-22',1,NULL,NULL,NULL);
+-- INSERT INTO `orders` VALUES (5,5,'2017-08-25',2,'','2017-08-26',3);
+-- INSERT INTO `orders` VALUES (6,10,'2018-11-18',1,'Aliquam erat volutpat. In congue.',NULL,NULL);
+-- INSERT INTO `orders` VALUES (7,2,'2018-09-22',2,NULL,'2018-09-23',4);
+-- INSERT INTO `orders` VALUES (8,5,'2018-06-08',1,'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.',NULL,NULL);
+-- INSERT INTO `orders` VALUES (9,10,'2017-07-05',2,'Nulla mollis molestie lorem. Quisque ut erat.','2017-07-06',1);
+-- INSERT INTO `orders` VALUES (10,6,'2018-04-22',2,NULL,'2018-04-23',2);
 --

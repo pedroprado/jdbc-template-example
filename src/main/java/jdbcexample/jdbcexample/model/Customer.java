@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Customer {
 
-    private int customer_id;
+    private Integer customer_id;
     private String first_name;
     private String last_name;
     private Date birth_date;
@@ -12,11 +12,13 @@ public class Customer {
     private String address;
     private String city;
     private String state;
-    private int points;
+    private Integer points;
 
     public Customer(){}
 
-    public Customer(int customer_id, String first_name, String last_name, Date birth_date, String phone, String address, String city, String state, int points) {
+    public Customer(Integer customer_id, String first_name, String last_name,
+                    Date birth_date, String phone, String address, String city, String state,
+                    Integer points) {
         this.customer_id = customer_id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -28,11 +30,11 @@ public class Customer {
         this.points = points;
     }
 
-    public int getCustomer_id() {
+    public Integer getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(Integer customer_id) {
         this.customer_id = customer_id;
     }
 
@@ -92,11 +94,11 @@ public class Customer {
         this.state = state;
     }
 
-    public int getPoints() {
+    public Integer getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(Integer points) {
         this.points = points;
     }
 }
