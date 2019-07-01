@@ -19,7 +19,7 @@ public class CustomerRepository {
         return  jdbcTemplate.query(GET_ALL_CUSTOMERS_QUERY,
                 (res, rowNum)->
                         new Customer(
-                                res.getInt("customerer_id"), res.getString("first_name"),
+                                res.getInt("customer_id"), res.getString("first_name"),
                                 res.getString("last_name"), res.getDate("birth_date"),
                                 res.getString("phone"), res.getString("address"),
                                 res.getString("city"), res.getString("state"),
