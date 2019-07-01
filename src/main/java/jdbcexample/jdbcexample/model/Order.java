@@ -9,7 +9,6 @@ public class Order {
     private Integer status;
     private String comments;
     private Date shipped_date;
-
     private Integer shipper_id;
 
     public Order() {

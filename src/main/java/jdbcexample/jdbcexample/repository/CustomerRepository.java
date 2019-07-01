@@ -1,6 +1,7 @@
 package jdbcexample.jdbcexample.repository;
 
 import jdbcexample.jdbcexample.model.Customer;
+import jdbcexample.jdbcexample.model.CustomerOrderData;
 import jdbcexample.jdbcexample.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -51,5 +52,15 @@ public class CustomerRepository {
 
     public void deleteCustomer(String DELETE_CUSTOMER_QUERY, int customer_id) {
         jdbcTemplate.update(DELETE_CUSTOMER_QUERY, new Object[]{customer_id});
+    }
+
+    public List<CustomerOrderData> listCustomersOrderData(String GET_CUSTOMER_ORDER_DATA_QUERY, String customer_name) {
+        return  jdbcTemplate.query(GET_CUSTOMER_ORDER_DATA_QUERY, new Object[]{customer_name},
+                (rs, rowNum) ->
+                new CustomerOrderData(
+                     rs.getString("first_name"), rs.getString("last_name"),
+                     rs.getDate("order_date"), rs.getString("shipper_name")
+                )
+                );
     }
 }

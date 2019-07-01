@@ -1,6 +1,7 @@
 package jdbcexample.jdbcexample.controller;
 
 import jdbcexample.jdbcexample.model.Customer;
+import jdbcexample.jdbcexample.model.CustomerOrderData;
 import jdbcexample.jdbcexample.model.Shipper;
 import jdbcexample.jdbcexample.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,13 @@ public class CustomerController {
         customerService.deleteCustomer(customer_id);
         return new ResponseEntity<>("{\"Message\": \"Deleted.\"}", HttpStatus.OK);
 
+    }
+
+    @GetMapping(path = "/order_data/{customer_name}")
+    public ResponseEntity<?> getCustomerOrderData(
+            @PathVariable String customer_name
+    ){
+        List<CustomerOrderData> customerOrderData = customerService.listCustomersOrderData(customer_name);
+        return  new ResponseEntity<>(customerOrderData, HttpStatus.OK);
     }
 }
